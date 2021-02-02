@@ -14,4 +14,13 @@ class ProductTest {
 		
 		assertEquals(25, cost);
 	}
+	
+	@Test
+	public void testPepsiProductCost() {
+		Product pepsiProduct = Product.PEPSI;
+		
+		int cost = pepsiProduct.getCost();
+		
+		assertEquals(35, cost);
+	}
 }
