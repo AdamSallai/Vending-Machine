@@ -43,6 +43,21 @@ class VendingModelTest {
 		assertThrows(Exception.class, () -> {
 			Product actualProduct = vendingModel.getProductByName("water");
 		});
-		
+	
 	}
+	
+	@Test
+	public void testValidateCoin() {
+		boolean valid1 = vendingModel.validateCoin(1);
+		boolean valid2 = vendingModel.validateCoin(5);
+		boolean valid3 = vendingModel.validateCoin(10);
+		boolean valid4 = vendingModel.validateCoin(25);
+		
+		assertTrue(valid1);
+		assertTrue(valid2);
+		assertTrue(valid3);
+		assertTrue(valid4);
+	}
+	
+	
 }

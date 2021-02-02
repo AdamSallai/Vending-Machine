@@ -1,5 +1,7 @@
 package com.codecool.machine.model;
 
+import java.util.Arrays;
+
 public class VendingModel {
 
 	public Product getProductByName(String productName) throws Exception {
@@ -14,6 +16,10 @@ public class VendingModel {
 			default:
 				throw new Exception();
 		}
+	}
+
+	public boolean validateCoin(int coin) {
+		return coin == 1 || coin == 5 || coin == 10 || coin == 25;
 	}
 
 }
