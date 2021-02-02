@@ -37,4 +37,12 @@ class VendingModelTest {
 		assertEquals(expectedProduct, actualProduct);
 		
 	}
+	
+	@Test
+	public void testGetProductByNameWaterThrowsException() throws Exception {
+		assertThrows(Exception.class, () -> {
+			Product actualProduct = vendingModel.getProductByName("water");
+		});
+		
+	}
 }
