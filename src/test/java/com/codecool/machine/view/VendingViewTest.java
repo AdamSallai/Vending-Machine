@@ -3,10 +3,13 @@ package com.codecool.machine.view;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class VendingViewTest {
@@ -15,9 +18,10 @@ class VendingViewTest {
 	private static final PrintStream originalOut = System.out;
 	private static final PrintStream originalErr = System.err;
 	private static final VendingView view = new VendingView();
+    private static final String os = System.getProperty("os.name");
 
-	@BeforeAll
-	public static void setUpStreams() {
+	@BeforeEach
+	public void setUpStreams() {
 	    System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
 	}
@@ -33,10 +37,23 @@ class VendingViewTest {
 	}
 	
 
-	@AfterAll
-	public static void restoreStreams() {
+	@Test
+	public void testPutCoinInMessage() {
+		String expectedMessage = "Put in a coin (1, 5, 10 or 25).\n";
+		
+		view.putCoinMessage();
+		
+		assertEquals(expectedMessage, outContent.toString());
+		
+	}
+	
+
+	@AfterEach
+	public void restoreStreams() {
 	    System.setOut(originalOut);
 	    System.setErr(originalErr);
+	    outContent.reset();
+		errContent.reset();
 	}
 
 
