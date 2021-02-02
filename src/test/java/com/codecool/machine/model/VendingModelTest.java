@@ -59,5 +59,13 @@ class VendingModelTest {
 		assertTrue(valid4);
 	}
 	
+
+	@Test
+	public void testValidateCoinWithInvalidParameter() {
+		boolean invalid = vendingModel.validateCoin(0);
+		
+		assertFalse(invalid);
+	}
+	
 	
 }
