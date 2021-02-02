@@ -10,4 +10,9 @@ public class VendingView {
 	public void putCoinMessage() {
 		System.out.println("Put in a coin (1, 5, 10 or 25).");
 	}
+
+	public void invalidCoinMessage() {
+		System.out.println("The machine didn't accept your coin! It only accepts 1, 5, 10 or 25.");
+		
+	}
 }

@@ -48,6 +48,17 @@ class VendingViewTest {
 	}
 	
 
+	@Test
+	public void testInvalidCoinMessage() {
+		String expectedMessage = "The machine didn't accept your coin! It only accepts 1, 5, 10 or 25.\n";
+		
+		view.invalidCoinMessage();
+		
+		assertEquals(expectedMessage, outContent.toString());
+		
+	}
+	
+
 	@AfterEach
 	public void restoreStreams() {
 	    System.setOut(originalOut);
