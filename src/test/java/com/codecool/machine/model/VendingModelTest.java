@@ -66,6 +66,12 @@ class VendingModelTest {
 		
 		assertFalse(invalid);
 	}
-	
+
+	@Test
+	public void testCalculateDifference() {
+		int actual = vendingModel.calculateDifference(10, 5);
+		
+		assertEquals(5, actual);
+	}
 	
 }

@@ -22,4 +22,8 @@ public class VendingModel {
 		return coin == 1 || coin == 5 || coin == 10 || coin == 25;
 	}
 
+	public int calculateDifference(int productCost, int userCurrentMoney) {
+		return productCost - userCurrentMoney;
+	}
+
 }
