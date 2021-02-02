@@ -65,6 +65,16 @@ class VendingViewTest {
 		assertEquals(expectedMessage, outContent.toString());
 
 	}
+	
+	@Test
+	public void testTransactionSuccessMessage() {
+		String expectedMessage = "You successfully bought a Soda. Returning 5 coins.\n";
+
+		view.transactionSuccessMessage("Soda", 5);
+
+		assertEquals(expectedMessage, outContent.toString());
+
+	}
 
 	@AfterEach
 	public void restoreStreams() {

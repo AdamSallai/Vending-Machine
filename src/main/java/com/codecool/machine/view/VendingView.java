@@ -1,6 +1,5 @@
 package com.codecool.machine.view;
 
-
 public class VendingView {
 
 	public void selectProductMessage() {
@@ -13,10 +12,14 @@ public class VendingView {
 
 	public void invalidCoinMessage() {
 		System.out.println("The machine didn't accept your coin! It only accepts 1, 5, 10 or 25.");
-		
+
 	}
 
 	public void refundMessage(int coin) {
 		System.out.println("Your " + coin + " coins are refunded.");
+	}
+
+	public void transactionSuccessMessage(String name, int coin) {
+		System.out.println("You successfully bought a " + name + ". Returning " + coin + " coins.");
 	}
 }
