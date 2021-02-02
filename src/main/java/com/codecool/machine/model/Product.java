@@ -2,7 +2,8 @@ package com.codecool.machine.model;
 
 public enum Product {
 	COKE(25), 
-	PEPSI(35);
+	PEPSI(35), 
+	SODA(45);
 
 	
 	private int cost;

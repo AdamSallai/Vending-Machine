@@ -23,4 +23,13 @@ class ProductTest {
 		
 		assertEquals(35, cost);
 	}
+	
+	@Test
+	public void testSodaProductCost() {
+		Product sodaProduct = Product.SODA;
+		
+		int cost = sodaProduct.getCost();
+		
+		assertEquals(45, cost);
+	}
 }
