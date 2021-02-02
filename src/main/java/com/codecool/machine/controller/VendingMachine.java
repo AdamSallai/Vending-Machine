@@ -20,6 +20,11 @@ public class VendingMachine {
 		setScanner(new Scanner(System.in));
 	}
 
+	public void run() {
+		
+		
+	}
+	
 
 	public void setScanner(Scanner scanner) {
 		this.scanner = scanner;
