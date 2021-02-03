@@ -2,6 +2,9 @@ package com.codecool.machine.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 class VendingModelTest {
@@ -72,6 +75,17 @@ class VendingModelTest {
 		int actual = vendingModel.calculateDifference(5, 10);
 		
 		assertEquals(5, actual);
+	}
+	
+	@Test
+	public void testAddToInventory() {
+		Map<Product, Integer> inventory = new HashMap<Product, Integer>();
+		inventory.put(Product.COKE, 0);
+		vendingModel.addToInventory(inventory, Product.COKE);
+		vendingModel.addToInventory(inventory, Product.PEPSI);
+		
+		assertEquals(1, inventory.get(Product.COKE));
+		assertEquals(0, inventory.get(Product.PEPSI));
 	}
 	
 }

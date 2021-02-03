@@ -1,5 +1,8 @@
 package com.codecool.machine.controller;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.codecool.machine.model.Product;
@@ -13,12 +16,17 @@ public class VendingMachine {
 	private Product product = null;
 	private Scanner scanner;
 	private int money = 0;
+	private Map<Product, Integer> productInventory;
 	
 	
 	public VendingMachine(VendingModel model, VendingView view) {
 		this.model = model;
 		this.view = view;
 		setScanner(new Scanner(System.in));
+		productInventory = new HashMap<Product, Integer>();
+		Arrays.stream(Product.values()).forEach(product -> {
+			productInventory.put(product, 0);
+		});
 	}
 
 	public void run() {
@@ -26,6 +34,7 @@ public class VendingMachine {
 		
 		while(!exit) {
 			if(product == null) {
+				System.out.println(productInventory);
 				selectProduct();
 			}
 			if(product != null && money < product.getCost()) {
@@ -43,6 +52,7 @@ public class VendingMachine {
 		int coin = model.calculateDifference(product.getCost(), money);
 		view.transactionSuccessMessage(name, coin);
 		setMoneyToZero();
+		model.addToInventory(productInventory, product);
 		product = null;
 	}
 

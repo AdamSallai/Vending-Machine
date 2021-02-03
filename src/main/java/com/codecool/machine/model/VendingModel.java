@@ -1,5 +1,6 @@
 package com.codecool.machine.model;
 
+import java.util.Map;
 
 public class VendingModel {
 
@@ -23,6 +24,16 @@ public class VendingModel {
 
 	public int calculateDifference(int productCost, int userCurrentMoney) {
 		return userCurrentMoney - productCost;
+	}
+
+	public void addToInventory(Map<Product, Integer> productInventory, Product product) {
+		try {
+			int newAmount = productInventory.get(product) + 1;
+			productInventory.put(product, newAmount);
+		} catch (Exception e) {
+			productInventory.put(product, 0);
+		}
+
 	}
 
 }
