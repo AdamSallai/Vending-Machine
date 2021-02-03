@@ -26,12 +26,17 @@ public class VendingMachine {
 		
 		while(!exit) {
 			if(product == null) {
+				selectProduct();
+			} else {
+				if(money < product.getCost()) {
+					
+				}
 			}
 		}
 		
 	}
 	
-	private void selectProduct() {
+	public void selectProduct() {
 		view.selectProductMessage();
 		String productName = scanner.next();
 		try {
@@ -44,5 +49,9 @@ public class VendingMachine {
 
 	public void setScanner(Scanner scanner) {
 		this.scanner = scanner;
+	}
+	
+	public Product getProduct() {
+		return product;
 	}
 }

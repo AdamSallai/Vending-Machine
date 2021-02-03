@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class VendingViewTest {
-	private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	private static final PrintStream originalOut = System.out;
-	private static final PrintStream originalErr = System.err;
-	private static final VendingView view = new VendingView();
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+	private final PrintStream originalOut = System.out;
+	private final PrintStream originalErr = System.err;
+	private final VendingView view = new VendingView();
 
 	@BeforeEach
 	public void setUpStreams() {
