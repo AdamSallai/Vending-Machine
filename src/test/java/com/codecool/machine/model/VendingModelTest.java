@@ -69,7 +69,7 @@ class VendingModelTest {
 
 	@Test
 	public void testCalculateDifference() {
-		int actual = vendingModel.calculateDifference(10, 5);
+		int actual = vendingModel.calculateDifference(5, 10);
 		
 		assertEquals(5, actual);
 	}

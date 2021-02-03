@@ -1,6 +1,5 @@
 package com.codecool.machine.model;
 
-import java.util.Arrays;
 
 public class VendingModel {
 
@@ -23,7 +22,7 @@ public class VendingModel {
 	}
 
 	public int calculateDifference(int productCost, int userCurrentMoney) {
-		return productCost - userCurrentMoney;
+		return userCurrentMoney - productCost;
 	}
 
 }
