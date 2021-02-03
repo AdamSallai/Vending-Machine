@@ -71,7 +71,17 @@ class VendingMachineTest {
 		assertEquals(0, vendingMachine.getMoney());
 		
 	}
-	
+
+	@Test
+	public void testTransactionFinish() {
+		vendingMachine.setProduct(Product.COKE);
+		vendingMachine.setMoney(25);
+		
+		vendingMachine.transactionFinish();
+		
+		assertEquals(0, vendingMachine.getMoney());
+		assertNull(vendingMachine.getProduct());
+	}
 }
 
 

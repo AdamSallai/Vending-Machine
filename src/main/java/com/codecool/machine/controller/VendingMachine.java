@@ -27,18 +27,28 @@ public class VendingMachine {
 		while(!exit) {
 			if(product == null) {
 				selectProduct();
-			} else {
-				if(money < product.getCost()) {
-					putCoinIn();
-				}
+			}
+			if(product == null && money < product.getCost()) {
+				putCoinIn();
+			}
+			if(product == null && product.getCost() <= money) {
+				transactionFinish();
 			}
 		}
 		
 	}
 	
+	public void transactionFinish() {
+		String name = product.name();
+		int coin = model.calculateDifference(product.getCost(), money);
+		view.transactionSuccessMessage(name, coin);
+		setMoneyToZero();
+		product = null;
+	}
+
 	public void putCoinIn() {
 		view.putCoinMessage();
-		int coin = Integer.parseInt(scanner.next());
+		int coin = scanner.nextInt();
 		if(model.validateCoin(coin)) {
 			money += coin;
 		} else {
@@ -63,6 +73,10 @@ public class VendingMachine {
 	public void setMoneyToZero() {
 		money = 0;
 	}
+	
+	public void setMoney(int money) {
+		this.money = money;
+	}
 
 	public void setScanner(Scanner scanner) {
 		this.scanner = scanner;
@@ -70,5 +84,9 @@ public class VendingMachine {
 	
 	public Product getProduct() {
 		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }
