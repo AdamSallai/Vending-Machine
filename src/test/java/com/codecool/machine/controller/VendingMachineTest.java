@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import com.codecool.machine.model.Product;
 import com.codecool.machine.model.VendingModel;
@@ -12,8 +13,8 @@ import com.codecool.machine.view.VendingView;
 
 
 class VendingMachineTest {
-	private VendingModel vendingModel = new VendingModel();
-	private VendingView vendingView = new VendingView();
+	private VendingModel vendingModel = Mockito.mock(VendingModel.class);
+	private VendingView vendingView = Mockito.mock(VendingView.class);
 	private VendingMachine vendingMachine = new VendingMachine(vendingModel,vendingView);
 
 	@Test
@@ -22,11 +23,12 @@ class VendingMachineTest {
 	}
 
 	@Test
-	public void testSelectProductWithValidInput() {
+	public void testSelectProductWithValidInput() throws Exception {
 	    String input = "coke";
-
 	    Scanner scanner = new Scanner(input);
 	    vendingMachine.setScanner(scanner);
+	    Mockito.when(vendingModel.getProductByName(input)).thenReturn(Product.COKE);
+	    
 	    vendingMachine.selectProduct();
 		
 		assertEquals(Product.COKE, vendingMachine.getProduct());
@@ -34,11 +36,12 @@ class VendingMachineTest {
 	}
 
 	@Test
-	public void testSelectProductWithInvalidInput() {
+	public void testSelectProductWithInvalidInput() throws Exception {
 	    String input = "pasta";
-
 	    Scanner scanner = new Scanner(input);
 	    vendingMachine.setScanner(scanner);
+	    Mockito.when(vendingModel.getProductByName(input)).thenThrow(new Exception());
+	    
 	    vendingMachine.selectProduct();
 		
 		assertNull(vendingMachine.getProduct());
