@@ -34,7 +34,6 @@ public class VendingMachine {
 		
 		while(!exit) {
 			if(product == null) {
-				view.consumptionMessage(productConsumption);
 				selectProduct();
 			}
 			if(product != null && money < product.getCost()) {
@@ -54,27 +53,51 @@ public class VendingMachine {
 		setMoneyToZero();
 		model.addToInventory(productConsumption, product);
 		product = null;
+		view.consumptionMessage(productConsumption);
 	}
 
 	public void putCoinIn() {
 		view.putCoinMessage();
-		String coin = scanner.next();
-		boolean validCoin = false;
-		if(coin.matches("-?\\d+") && model.validateCoin(Integer.parseInt(coin))) {
-			money += Integer.parseInt(coin);
+		String input = scanner.next();
+
+		if(!checkIfRefund(input)) {
+			if(input.matches("-?\\d+") && model.validateCoin(Integer.parseInt(input))) {
+				money += Integer.parseInt(input);
+			} else {
+				view.invalidCoinMessage();
+			}
 		} else {
-			view.invalidCoinMessage();
+			refund();
 		}
 	}
+	
 
 	public void selectProduct() {
 		view.selectProductMessage();
-		String productName = scanner.next();
-		try {
-			product = model.getProductByName(productName);
-		} catch (Exception e) {
-			view.invalidProductMessage();
+		String input = scanner.next();
+		if(!checkIfRefund(input)) {
+			try {
+				product = model.getProductByName(input);
+			} catch (Exception e) {
+				view.invalidProductMessage();
+			}
+		}else {
+			refund();
 		}
+	}
+	
+	public void refund() {
+		view.refundMessage(money);
+		setMoneyToZero();
+		product = null;
+		
+	}
+	
+	public boolean checkIfRefund(String input) {
+		if(input == "refund") {
+			return true;
+		}
+		return false;
 	}
 	
 	public int getMoney() {

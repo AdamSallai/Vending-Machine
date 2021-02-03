@@ -95,6 +95,16 @@ class VendingMachineTest {
 		assertEquals(0, vendingMachine.getMoney());
 		assertNull(vendingMachine.getProduct());
 	}
+	
+	@Test
+	public void testcheckIfRefund() {
+		boolean valid = vendingMachine.checkIfRefund("refund");
+		boolean invalid = vendingMachine.checkIfRefund("no");
+		
+		assertTrue(valid);
+		assertFalse(invalid);
+		
+	}
 }
 
 
