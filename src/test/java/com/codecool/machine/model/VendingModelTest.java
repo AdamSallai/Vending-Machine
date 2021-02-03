@@ -78,7 +78,7 @@ class VendingModelTest {
 	}
 	
 	@Test
-	public void testAddToInventory() {
+	public void testAddToConsumption() {
 		Map<Product, Integer> consumption = new HashMap<Product, Integer>();
 		consumption.put(Product.COKE, 0);
 		vendingModel.addToConsumption(consumption, Product.COKE);
@@ -86,6 +86,15 @@ class VendingModelTest {
 		
 		assertEquals(1, consumption.get(Product.COKE));
 		assertEquals(0, consumption.get(Product.PEPSI));
+	}
+
+	@Test
+	public void testDecreaseInventory() {
+		Map<Product, Integer> inventory = new HashMap<Product, Integer>();
+		inventory.put(Product.COKE, 3);
+		vendingModel.decreaseInventory(inventory, Product.COKE);
+		
+		assertEquals(2, inventory.get(Product.COKE));
 	}
 	
 }

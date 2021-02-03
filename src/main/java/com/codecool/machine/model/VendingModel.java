@@ -37,8 +37,8 @@ public class VendingModel {
 	}
 
 	public void decreaseInventory(Map<Product, Integer> productInventory, Product product) {
-		// TODO Auto-generated method stub
-		
+		int newAmount = productInventory.get(product) - 1;
+		productInventory.put(product, newAmount);
 	}
 
 }
