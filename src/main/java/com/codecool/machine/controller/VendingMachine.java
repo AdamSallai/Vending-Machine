@@ -90,7 +90,6 @@ public class VendingMachine {
 		view.refundMessage(money);
 		setMoneyToZero();
 		product = null;
-		
 	}
 	
 	public boolean checkIfRefund(String input) {

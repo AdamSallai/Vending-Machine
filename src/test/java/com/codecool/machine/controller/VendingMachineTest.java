@@ -105,6 +105,17 @@ class VendingMachineTest {
 		assertFalse(invalid);
 		
 	}
+	@Test
+	public void testRefund() {
+		vendingMachine.setMoney(10);
+		vendingMachine.setProduct(Product.COKE);
+		
+		vendingMachine.refund();
+		
+		assertNull(vendingMachine.getProduct());
+		assertEquals(0, vendingMachine.getMoney());
+		
+	}
 }
 
 
