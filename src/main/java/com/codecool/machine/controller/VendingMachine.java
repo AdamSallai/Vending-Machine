@@ -56,9 +56,11 @@ public class VendingMachine {
 		int coin = model.calculateDifference(product.getCost(), money);
 		view.transactionSuccessMessage(name, coin);
 		setMoneyToZero();
-		model.addToInventory(productConsumption, product);
+		model.addToConsumption(productConsumption, product);
+		model.decreaseInventory(productInventory, product);
 		product = null;
 		view.consumptionMessage(productConsumption);
+		view.inventoryMessage(productInventory);
 	}
 
 	public void putCoinIn() {

@@ -26,7 +26,7 @@ public class VendingModel {
 		return userCurrentMoney - productCost;
 	}
 
-	public void addToInventory(Map<Product, Integer> productInventory, Product product) {
+	public void addToConsumption(Map<Product, Integer> productInventory, Product product) {
 		try {
 			int newAmount = productInventory.get(product) + 1;
 			productInventory.put(product, newAmount);
@@ -34,6 +34,11 @@ public class VendingModel {
 			productInventory.put(product, 0);
 		}
 
+	}
+
+	public void decreaseInventory(Map<Product, Integer> productInventory, Product product) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
