@@ -17,10 +17,6 @@ class VendingMachineTest {
 	private VendingView vendingView = Mockito.mock(VendingView.class);
 	private VendingMachine vendingMachine = new VendingMachine(vendingModel,vendingView);
 
-	@Test
-	public void testIncreaseMoney() {
-		
-	}
 
 	@Test
 	public void testSelectProductWithValidInput() throws Exception {
@@ -48,4 +44,24 @@ class VendingMachineTest {
 		
 	}
 	
+	@Test
+	public void testPutCoinIn() {
+	    String input = "1";
+	    Scanner scanner = new Scanner(input);
+	    vendingMachine.setScanner(scanner);
+	    Mockito.when(vendingModel.validateCoin(Integer.parseInt(input))).thenReturn(true);
+
+	    vendingMachine.setMoneyToZero();
+		vendingMachine.putCoinIn();
+		
+		assertEquals(1, vendingMachine.getMoney());
+		
+	}
+	
 }
+
+
+
+
+
+

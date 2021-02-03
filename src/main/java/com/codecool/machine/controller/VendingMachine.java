@@ -36,8 +36,14 @@ public class VendingMachine {
 		
 	}
 	
-	private void putCoinIn() {
-		
+	public void putCoinIn() {
+		view.putCoinMessage();
+		int coin = Integer.parseInt(scanner.next());
+		if(model.validateCoin(coin)) {
+			money += coin;
+		} else {
+			view.invalidCoinMessage();
+		}
 	}
 
 	public void selectProduct() {
@@ -50,6 +56,13 @@ public class VendingMachine {
 		}
 	}
 	
+	public int getMoney() {
+		return money;
+	}
+	
+	public void setMoneyToZero() {
+		money = 0;
+	}
 
 	public void setScanner(Scanner scanner) {
 		this.scanner = scanner;
