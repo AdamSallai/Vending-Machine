@@ -10,8 +10,9 @@ public class VendingMachine {
 	
 	private VendingModel model;
 	private VendingView view;
-	private Product product;
+	private Product product = null;
 	private Scanner scanner;
+	private int money = 0;
 	
 	
 	public VendingMachine(VendingModel model, VendingView view) {
@@ -21,8 +22,23 @@ public class VendingMachine {
 	}
 
 	public void run() {
+		boolean exit = false;
 		
+		while(!exit) {
+			if(product == null) {
+			}
+		}
 		
+	}
+	
+	private void selectProduct() {
+		view.selectProductMessage();
+		String productName = scanner.next();
+		try {
+			product = model.getProductByName(productName);
+		} catch (Exception e) {
+			view.invalidProductMessage();
+		}
 	}
 	
 

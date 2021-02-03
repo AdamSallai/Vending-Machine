@@ -3,7 +3,7 @@ package com.codecool.machine.view;
 public class VendingView {
 
 	public void selectProductMessage() {
-		System.out.println("To select project please write Coke, Pepsi or Soda.");
+		System.out.println("To select product please write Coke, Pepsi or Soda.");
 	}
 
 	public void putCoinMessage() {
@@ -21,5 +21,9 @@ public class VendingView {
 
 	public void transactionSuccessMessage(String name, int coin) {
 		System.out.println("You successfully bought a " + name + ". Returning " + coin + " coins.");
+	}
+
+	public void invalidProductMessage() {
+		System.out.println("The product you chose doesn't exist. Try again.");
 	}
 }

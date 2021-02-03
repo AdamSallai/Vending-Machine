@@ -18,7 +18,6 @@ class VendingViewTest {
 	private static final PrintStream originalOut = System.out;
 	private static final PrintStream originalErr = System.err;
 	private static final VendingView view = new VendingView();
-	private static final String os = System.getProperty("os.name");
 
 	@BeforeEach
 	public void setUpStreams() {
@@ -28,7 +27,7 @@ class VendingViewTest {
 
 	@Test
 	public void testSelectProductMessage() {
-		String expectedMessage = "To select project please write Coke, Pepsi or Soda.\n";
+		String expectedMessage = "To select product please write Coke, Pepsi or Soda.\n";
 
 		view.selectProductMessage();
 
@@ -71,6 +70,16 @@ class VendingViewTest {
 		String expectedMessage = "You successfully bought a Soda. Returning 5 coins.\n";
 
 		view.transactionSuccessMessage("Soda", 5);
+
+		assertEquals(expectedMessage, outContent.toString());
+
+	}
+	
+	@Test
+	public void testInvalidProductMessage() {
+		String expectedMessage = "The product you chose doesn't exist. Try again.\n";
+
+		view.invalidProductMessage();
 
 		assertEquals(expectedMessage, outContent.toString());
 
