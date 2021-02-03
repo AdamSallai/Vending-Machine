@@ -28,10 +28,10 @@ public class VendingMachine {
 			if(product == null) {
 				selectProduct();
 			}
-			if(product == null && money < product.getCost()) {
+			if(product != null && money < product.getCost()) {
 				putCoinIn();
 			}
-			if(product == null && product.getCost() <= money) {
+			if(product != null && product.getCost() <= money) {
 				transactionFinish();
 			}
 		}
@@ -48,9 +48,10 @@ public class VendingMachine {
 
 	public void putCoinIn() {
 		view.putCoinMessage();
-		int coin = scanner.nextInt();
-		if(model.validateCoin(coin)) {
-			money += coin;
+		String coin = scanner.next();
+		boolean validCoin = false;
+		if(coin.matches("-?\\d+") && model.validateCoin(Integer.parseInt(coin))) {
+			money += Integer.parseInt(coin);
 		} else {
 			view.invalidCoinMessage();
 		}

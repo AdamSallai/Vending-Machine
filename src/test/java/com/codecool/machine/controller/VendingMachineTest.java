@@ -71,6 +71,19 @@ class VendingMachineTest {
 		assertEquals(0, vendingMachine.getMoney());
 		
 	}
+	
+	@Test
+	public void testPutCoinInWithInvalidInputType() {
+	    String input = "a";
+	    Scanner scanner = new Scanner(input);
+	    vendingMachine.setScanner(scanner);
+
+	    vendingMachine.setMoneyToZero();
+		vendingMachine.putCoinIn();
+		
+		assertEquals(0, vendingMachine.getMoney());
+		
+	}
 
 	@Test
 	public void testTransactionFinish() {
