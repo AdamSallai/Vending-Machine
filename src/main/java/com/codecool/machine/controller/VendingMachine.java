@@ -17,6 +17,7 @@ public class VendingMachine {
 	private Scanner scanner;
 	private int money = 0;
 	private Map<Product, Integer> productConsumption;
+	private Map<Product, Integer> productInventory;
 	
 	
 	public VendingMachine(VendingModel model, VendingView view) {
@@ -26,6 +27,9 @@ public class VendingMachine {
 		productConsumption = new HashMap<Product, Integer>();
 		Arrays.stream(Product.values()).forEach(product -> {
 			productConsumption.put(product, 0);
+		});
+		Arrays.stream(Product.values()).forEach(product -> {
+			productInventory.put(product, 10);
 		});
 	}
 

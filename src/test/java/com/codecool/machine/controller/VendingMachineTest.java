@@ -114,7 +114,6 @@ class VendingMachineTest {
 		
 		assertNull(vendingMachine.getProduct());
 		assertEquals(0, vendingMachine.getMoney());
-		
 	}
 }
 
