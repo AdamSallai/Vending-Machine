@@ -25,6 +25,7 @@ public class VendingMachine {
 		this.view = view;
 		setScanner(new Scanner(System.in));
 		productConsumption = new HashMap<Product, Integer>();
+		productInventory = new HashMap<Product, Integer>();
 		Arrays.stream(Product.values()).forEach(product -> {
 			productConsumption.put(product, 0);
 		});
