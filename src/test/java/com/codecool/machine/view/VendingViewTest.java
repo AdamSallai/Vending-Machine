@@ -111,6 +111,16 @@ class VendingViewTest {
 		assertEquals(expectedMessage, outContent.toString());
 	}
 
+	@Test
+	public void testProductIsNotInInventoryMessage() {
+		String expectedMessage = "COKE is not in inventory.\n";
+		
+		view.productIsNotInInventoryMessage(Product.COKE.name());
+
+		assertEquals(expectedMessage, outContent.toString());
+	}
+	
+
 	@AfterEach
 	public void restoreStreams() {
 		System.setOut(originalOut);
