@@ -99,6 +99,17 @@ class VendingViewTest {
 
 		assertEquals(expectedMessage, outContent.toString());
 	}
+	
+	@Test
+	public void testInventorynMessage() {
+		String expectedMessage = "Products left in inventory: {COKE=2}\n";
+		Map<Product, Integer> inventory = new HashMap<Product, Integer>();
+		inventory.put(Product.COKE, 2);
+		
+		view.inventoryMessage(inventory);
+
+		assertEquals(expectedMessage, outContent.toString());
+	}
 
 	@AfterEach
 	public void restoreStreams() {

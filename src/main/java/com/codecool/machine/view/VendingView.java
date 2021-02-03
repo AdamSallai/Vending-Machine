@@ -33,6 +33,10 @@ public class VendingView {
 
 	public void consumptionMessage(Map<Product, Integer> productConsumption) {
 		System.out.println("Total consumption: " + productConsumption.toString()); 
-		
+	}
+	
+
+	public void inventoryMessage(Map<Product, Integer> productInventory) {
+		System.out.println("Products left in inventory: " + productInventory.toString()); 
 	}
 }
