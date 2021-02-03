@@ -1,5 +1,9 @@
 package com.codecool.machine.view;
 
+import java.util.Map;
+
+import com.codecool.machine.model.Product;
+
 public class VendingView {
 
 	public void selectProductMessage() {
@@ -25,5 +29,10 @@ public class VendingView {
 
 	public void invalidProductMessage() {
 		System.out.println("The product you chose doesn't exist. Try again.");
+	}
+
+	public void consumptionMessage(Map<Product, Integer> productConsumption) {
+		System.out.println("Total consumption: " + productConsumption.toString()); 
+		
 	}
 }

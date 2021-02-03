@@ -16,16 +16,16 @@ public class VendingMachine {
 	private Product product = null;
 	private Scanner scanner;
 	private int money = 0;
-	private Map<Product, Integer> productInventory;
+	private Map<Product, Integer> productConsumption;
 	
 	
 	public VendingMachine(VendingModel model, VendingView view) {
 		this.model = model;
 		this.view = view;
 		setScanner(new Scanner(System.in));
-		productInventory = new HashMap<Product, Integer>();
+		productConsumption = new HashMap<Product, Integer>();
 		Arrays.stream(Product.values()).forEach(product -> {
-			productInventory.put(product, 0);
+			productConsumption.put(product, 0);
 		});
 	}
 
@@ -34,7 +34,7 @@ public class VendingMachine {
 		
 		while(!exit) {
 			if(product == null) {
-				System.out.println(productInventory);
+				view.consumptionMessage(productConsumption);
 				selectProduct();
 			}
 			if(product != null && money < product.getCost()) {
@@ -52,7 +52,7 @@ public class VendingMachine {
 		int coin = model.calculateDifference(product.getCost(), money);
 		view.transactionSuccessMessage(name, coin);
 		setMoneyToZero();
-		model.addToInventory(productInventory, product);
+		model.addToInventory(productConsumption, product);
 		product = null;
 	}
 

@@ -79,13 +79,13 @@ class VendingModelTest {
 	
 	@Test
 	public void testAddToInventory() {
-		Map<Product, Integer> inventory = new HashMap<Product, Integer>();
-		inventory.put(Product.COKE, 0);
-		vendingModel.addToInventory(inventory, Product.COKE);
-		vendingModel.addToInventory(inventory, Product.PEPSI);
+		Map<Product, Integer> consumption = new HashMap<Product, Integer>();
+		consumption.put(Product.COKE, 0);
+		vendingModel.addToInventory(consumption, Product.COKE);
+		vendingModel.addToInventory(consumption, Product.PEPSI);
 		
-		assertEquals(1, inventory.get(Product.COKE));
-		assertEquals(0, inventory.get(Product.PEPSI));
+		assertEquals(1, consumption.get(Product.COKE));
+		assertEquals(0, consumption.get(Product.PEPSI));
 	}
 	
 }

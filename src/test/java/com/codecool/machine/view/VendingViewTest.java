@@ -5,12 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.codecool.machine.model.Product;
 
 class VendingViewTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -83,6 +87,17 @@ class VendingViewTest {
 
 		assertEquals(expectedMessage, outContent.toString());
 
+	}
+	
+	@Test
+	public void testConsumptionMessage() {
+		String expectedMessage = "Total consumption: {COKE=2}\n";
+		Map<Product, Integer> consumption = new HashMap<Product, Integer>();
+		consumption.put(Product.COKE, 2);
+		
+		view.consumptionMessage(consumption);
+
+		assertEquals(expectedMessage, outContent.toString());
 	}
 
 	@AfterEach
