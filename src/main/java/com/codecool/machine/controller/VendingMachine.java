@@ -30,7 +30,7 @@ public class VendingMachine {
 			productConsumption.put(product, 0);
 		});
 		Arrays.stream(Product.values()).forEach(product -> {
-			productInventory.put(product, 10);
+			productInventory.put(product, 1);
 		});
 	}
 
@@ -86,6 +86,8 @@ public class VendingMachine {
 				Product chosenProduct = model.getProductByName(input);
 				if(model.productIsInInventory(chosenProduct, productInventory)) {
 					product = chosenProduct;
+				} else {
+					view.productIsNotInInventoryMessage(chosenProduct.name());
 				}
 			} catch (Exception e) {
 				view.invalidProductMessage();
