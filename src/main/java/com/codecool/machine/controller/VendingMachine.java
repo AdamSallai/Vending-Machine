@@ -66,7 +66,6 @@ public class VendingMachine {
 	public void putCoinIn() {
 		view.putCoinMessage();
 		String input = scanner.next();
-
 		if(!checkIfRefund(input)) {
 			if(input.matches("-?\\d+") && model.validateCoin(Integer.parseInt(input))) {
 				money += Integer.parseInt(input);
@@ -84,11 +83,14 @@ public class VendingMachine {
 		String input = scanner.next();
 		if(!checkIfRefund(input)) {
 			try {
-				product = model.getProductByName(input);
+				Product chosenProduct = model.getProductByName(input);
+				if(model.productIsInInventory(chosenProduct, productInventory)) {
+					product = chosenProduct;
+				}
 			} catch (Exception e) {
 				view.invalidProductMessage();
 			}
-		}else {
+		} else {
 			refund();
 		}
 	}
@@ -100,7 +102,7 @@ public class VendingMachine {
 	}
 	
 	public boolean checkIfRefund(String input) {
-		if(input == "refund") {
+		if(input.equals("refund")) {
 			return true;
 		}
 		return false;
@@ -128,5 +130,9 @@ public class VendingMachine {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public Map<Product, Integer> getProductInventory() {
+		return productInventory;
 	}
 }

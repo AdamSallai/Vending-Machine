@@ -41,4 +41,8 @@ public class VendingModel {
 		productInventory.put(product, newAmount);
 	}
 
+	public boolean productIsInInventory(Product chosenProduct, Map<Product, Integer> productInventory) {
+		return 0 < productInventory.get(chosenProduct);
+	}
+
 }

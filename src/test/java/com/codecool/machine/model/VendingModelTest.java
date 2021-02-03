@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.management.modelmbean.ModelMBean;
+
 import org.junit.jupiter.api.Test;
 
 class VendingModelTest {
@@ -95,6 +97,19 @@ class VendingModelTest {
 		vendingModel.decreaseInventory(inventory, Product.COKE);
 		
 		assertEquals(2, inventory.get(Product.COKE));
+	}
+	
+	@Test
+	public void testProductIsInInventory() {
+		Map<Product, Integer> productInventory = new HashMap<Product, Integer>();
+		productInventory.put(Product.COKE, 2);
+		productInventory.put(Product.PEPSI, 0);
+		
+		boolean valid = vendingModel.productIsInInventory(Product.COKE, productInventory);
+		boolean invalid = vendingModel.productIsInInventory(Product.PEPSI, productInventory);
+		
+		assertTrue(valid);
+		assertFalse(invalid);
 	}
 	
 }

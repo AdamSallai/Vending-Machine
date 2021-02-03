@@ -2,10 +2,12 @@ package com.codecool.machine.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import static org.mockito.ArgumentMatchers.*;
 
 import com.codecool.machine.model.Product;
 import com.codecool.machine.model.VendingModel;
@@ -23,6 +25,8 @@ class VendingMachineTest {
 	    String input = "coke";
 	    Scanner scanner = new Scanner(input);
 	    vendingMachine.setScanner(scanner);
+	    Map<Product, Integer> inventory = vendingMachine.getProductInventory();
+	    Mockito.when(vendingModel.productIsInInventory(Product.COKE, inventory)).thenReturn(true);
 	    Mockito.when(vendingModel.getProductByName(input)).thenReturn(Product.COKE);
 	    
 	    vendingMachine.selectProduct();
