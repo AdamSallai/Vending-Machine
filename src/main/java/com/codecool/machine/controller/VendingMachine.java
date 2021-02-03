@@ -29,13 +29,17 @@ public class VendingMachine {
 				selectProduct();
 			} else {
 				if(money < product.getCost()) {
-					
+					putCoinIn();
 				}
 			}
 		}
 		
 	}
 	
+	private void putCoinIn() {
+		
+	}
+
 	public void selectProduct() {
 		view.selectProductMessage();
 		String productName = scanner.next();

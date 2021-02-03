@@ -32,5 +32,17 @@ class VendingMachineTest {
 		assertEquals(Product.COKE, vendingMachine.getProduct());
 		
 	}
+
+	@Test
+	public void testSelectProductWithInvalidInput() {
+	    String input = "pasta";
+
+	    Scanner scanner = new Scanner(input);
+	    vendingMachine.setScanner(scanner);
+	    vendingMachine.selectProduct();
+		
+		assertNull(vendingMachine.getProduct());
+		
+	}
 	
 }
