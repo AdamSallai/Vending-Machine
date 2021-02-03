@@ -58,6 +58,20 @@ class VendingMachineTest {
 		
 	}
 	
+	@Test
+	public void testPutCoinInWithInvalidInput() {
+	    String input = "2";
+	    Scanner scanner = new Scanner(input);
+	    vendingMachine.setScanner(scanner);
+	    Mockito.when(vendingModel.validateCoin(Integer.parseInt(input))).thenReturn(false);
+
+	    vendingMachine.setMoneyToZero();
+		vendingMachine.putCoinIn();
+		
+		assertEquals(0, vendingMachine.getMoney());
+		
+	}
+	
 }
 
 
