@@ -31,7 +31,7 @@ class VendingViewTest {
 
 	@Test
 	public void testSelectProductMessage() {
-		String expectedMessage = "To select product please write Coke, Pepsi or Soda.\n";
+		String expectedMessage = "To select product please write Coke(25), Pepsi(35) or Soda(45).\n";
 
 		view.selectProductMessage();
 

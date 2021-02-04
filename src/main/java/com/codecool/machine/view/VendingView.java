@@ -7,7 +7,7 @@ import com.codecool.machine.model.Product;
 public class VendingView {
 
 	public void selectProductMessage() {
-		System.out.println("To select product please write Coke, Pepsi or Soda.");
+		System.out.println("To select product please write Coke(25), Pepsi(35) or Soda(45).");
 	}
 
 	public void putCoinMessage() {
