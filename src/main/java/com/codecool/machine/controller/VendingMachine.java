@@ -64,6 +64,7 @@ public class VendingMachine {
 	}
 
 	public void putCoinIn() {
+		view.currentTotalInputMessage(money, product.getCost());
 		view.putCoinMessage();
 		String input = scanner.next();
 		if(!checkIfRefund(input)) {

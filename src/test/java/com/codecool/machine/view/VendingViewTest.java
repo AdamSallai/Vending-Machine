@@ -120,6 +120,15 @@ class VendingViewTest {
 		assertEquals(expectedMessage, outContent.toString());
 	}
 	
+	@Test
+	public void testCurrentTotalInputMessage() {
+		String expectedMessage = "Your current total input is 25 coins. The product costs 35\n";
+		
+		view.currentTotalInputMessage(25, 35);
+
+		assertEquals(expectedMessage, outContent.toString());
+	}
+	
 
 	@AfterEach
 	public void restoreStreams() {

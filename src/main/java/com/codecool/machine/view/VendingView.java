@@ -16,7 +16,6 @@ public class VendingView {
 
 	public void invalidCoinMessage() {
 		System.out.println("The machine didn't accept your coin! It only accepts 1, 5, 10 or 25.");
-
 	}
 
 	public void refundMessage(int coin) {
@@ -41,5 +40,9 @@ public class VendingView {
 	
 	public void productIsNotInInventoryMessage(String productName) {
 		System.out.println(productName+" is not in inventory."); 
+	}
+	
+	public void currentTotalInputMessage(int coin, int productCost) {
+		System.out.println("Your current total input is "+coin+" coins. The product costs "+productCost); 
 	}
 }
