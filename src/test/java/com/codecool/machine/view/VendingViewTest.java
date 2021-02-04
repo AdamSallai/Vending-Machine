@@ -41,7 +41,7 @@ class VendingViewTest {
 
 	@Test
 	public void testPutCoinInMessage() {
-		String expectedMessage = "Put in a coin (1, 5, 10 or 25).\n";
+		String expectedMessage = "Put in a coin (1, 5, 10 or 25 or write 'refund' to cancel).\n";
 
 		view.putCoinMessage();
 

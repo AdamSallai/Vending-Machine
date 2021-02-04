@@ -11,7 +11,7 @@ public class VendingView {
 	}
 
 	public void putCoinMessage() {
-		System.out.println("Put in a coin (1, 5, 10 or 25).");
+		System.out.println("Put in a coin (1, 5, 10 or 25 or write 'refund' to cancel).");
 	}
 
 	public void invalidCoinMessage() {
